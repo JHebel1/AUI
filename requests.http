@@ -1,0 +1,81 @@
+### Get all players
+
+GET http://localhost:8080/api/players
+
+### Get single player
+
+GET http://localhost:8080/api/players/ba7cff1a-2082-3a34-af37-c5e2b51d6907
+
+### Get single player, not existing
+
+GET http://localhost:8080/api/player/baa276ae-a63b-3676-9df1-f5dad6c13bf4
+
+### Get club players
+
+GET http://localhost:8080/api/clubs/823b33a0-dcca-33cd-8fb5-26317306f4dd/players
+
+### Get club players not existing
+
+GET http://localhost:8080/api/clubs/823b33a0-dcca-33cd-8fb5-26317306f3dd/players
+
+### Create new player
+
+PUT http://localhost:8080/api/players/baa276ae-a63b-3676-9df1-f5dad6c13bf4
+Content-Type: application/json
+Authorization: Basic a2V2aW46dXNlcnVzZXI=
+
+{
+  "name": "Rio",
+  "surname": "Ngumoha",
+  "age": 18,
+  "club": {
+    "id": "823b33a0-dcca-33cd-8fb5-26317306f4dd"
+  }
+}
+
+### Create new player in club
+
+PUT http://localhost:8080/api/clubs/823b33a0-dcca-33cd-8fb5-26317306f4dd/players/baa276ae-a63b-3676-9df1-f5dad6c13bf3
+Content-Type: application/json
+Authorization: Basic a2V2aW46dXNlcnVzZXI=
+
+{
+  "name": "Milos",
+  "surname": "Kerkez",
+  "age": 22
+}
+
+### Delete player
+
+DELETE http://localhost:8080/api/players/eb611ffb-7984-305b-9b2a-02ff68f6d538
+
+### Get all clubs
+
+GET http://localhost:8080/api/clubs
+
+### Get single club
+
+GET http://localhost:8080/api/clubs/883f82d7-06b0-3ad0-a137-d6ab43823f86
+
+### Get single club not existing
+
+GET http://localhost:8080/api/clubs/eb611ffb-7984-305b-9b2a-02ff68f6d538
+
+### Create new club
+
+PUT http://localhost:8080/api/clubs/ac4e2683-b2ba-4695-94d9-806a97fce71e
+Content-Type: application/json
+Authorization: Basic a2V2aW46dXNlcnVzZXI=
+
+{
+  "name": "Juventus",
+  "country": "Italy"
+}
+
+### Delete club
+
+DELETE http://localhost:8080/api/clubs/ac4e2683-b2ba-4695-94d9-806a97fce71e
+
+### Delete club with players
+
+DELETE http://localhost:8080/api/clubs/883f82d7-06b0-3ad0-a137-d6ab43823f86

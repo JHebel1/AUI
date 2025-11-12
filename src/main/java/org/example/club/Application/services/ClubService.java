@@ -1,8 +1,9 @@
-package org.example.service;
+package org.example.club.Application.services;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
-import org.example.entity.Club;
-import org.example.repository.ClubRepository;
+import org.example.club.Domain.entities.Club;
+import org.example.club.Domain.repositories.ClubRepository;
+import org.example.core.exceptions.NotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -18,8 +19,8 @@ public class ClubService {
         return clubRepository.findAll();
     }
 
-    public Club findById(UUID id){
-        return clubRepository.findById(id).orElse(null);
+    public Club findById(UUID id) throws NotFoundException {
+        return clubRepository.findById(id).orElseThrow(NotFoundException::new);
     }
 
     public Club save(Club club){
@@ -32,5 +33,8 @@ public class ClubService {
 
     public List<Club> findByCountry(String country){
         return clubRepository.findByCountryIgnoreCase(country);
+    }
+    public boolean checkIfClubExists(UUID clubID){
+        return clubRepository.existsById(clubID);
     }
 }

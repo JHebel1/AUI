@@ -1,13 +1,11 @@
 package org.example.runner;
 
-import jakarta.persistence.Column;
 import lombok.RequiredArgsConstructor;
-import org.example.entity.Club;
-import org.example.entity.Player;
-import org.example.service.ClubService;
-import org.example.service.PlayerService;
+import org.example.club.Domain.entities.Club;
+import org.example.player.Domain.entities.Player;
+import org.example.club.Application.services.ClubService;
+import org.example.player.Application.services.PlayerService;
 import org.springframework.boot.CommandLineRunner;
-import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -24,6 +22,7 @@ public class ApplicationCommandLineRunner implements CommandLineRunner {
     public void run(String... args) {
         Scanner scanner = new Scanner(System.in);
         boolean running = true;
+
 
         System.out.println("Welcome to the Football CLI app! Type 'help' for commands.");
 
@@ -42,8 +41,7 @@ public class ApplicationCommandLineRunner implements CommandLineRunner {
                     break;
 
                 case "list players":
-                    List<Player> players = playerService.findAll();
-                    players.stream().forEach(System.out::println);
+                    Iterable<Player> players = playerService.findAll();
                     break;
 
                 case "add player":
@@ -70,6 +68,7 @@ public class ApplicationCommandLineRunner implements CommandLineRunner {
                 default:
                     System.out.println("Unknown command. Type 'help' for list of commands.");
             }
+
         }
 
         scanner.close();
@@ -133,7 +132,7 @@ public class ApplicationCommandLineRunner implements CommandLineRunner {
     }
 
     private void deletePlayer(Scanner scanner) {
-        List<Player> players = playerService.findAll();
+        Iterable<Player> players = playerService.findAll();
         players.forEach(p -> System.out.println(p.getId() + " - " + p.getSurname()));
         System.out.print("Enter player ID to delete: ");
         UUID playerId = UUID.fromString(scanner.nextLine());
@@ -159,4 +158,6 @@ public class ApplicationCommandLineRunner implements CommandLineRunner {
         clubService.deleteById(clubId);
         System.out.println("Player deleted successfully!");
     }
+
+
 }

@@ -1,7 +1,9 @@
-package org.example.entity;
+package org.example.club.Domain.entities;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.example.player.Domain.entities.Player;
+
 import java.io.Serializable;
 import java.util.*;
 @Getter

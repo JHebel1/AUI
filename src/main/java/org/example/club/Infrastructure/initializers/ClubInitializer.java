@@ -1,10 +1,9 @@
-package org.example.init;
+package org.example.club.Infrastructure.initializers;
 
 import lombok.RequiredArgsConstructor;
-import org.example.entity.Club;
-import org.example.service.ClubService;
+import org.example.club.Domain.entities.Club;
+import org.example.club.Application.services.ClubService;
 import org.springframework.beans.factory.InitializingBean;
-import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 import java.util.UUID;

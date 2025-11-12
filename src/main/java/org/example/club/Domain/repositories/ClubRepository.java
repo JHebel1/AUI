@@ -1,5 +1,5 @@
-package org.example.repository;
-import org.example.entity.Club;
+package org.example.club.Domain.repositories;
+import org.example.club.Domain.entities.Club;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

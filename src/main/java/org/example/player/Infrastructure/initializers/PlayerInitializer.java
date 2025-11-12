@@ -1,12 +1,11 @@
-package org.example.init;
+package org.example.player.Infrastructure.initializers;
 
 import lombok.RequiredArgsConstructor;
-import org.example.entity.Club;
-import org.example.entity.Player;
-import org.example.service.PlayerService;
+import org.example.club.Domain.entities.Club;
+import org.example.player.Domain.entities.Player;
+import org.example.player.Application.services.PlayerService;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.context.annotation.DependsOn;
-import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 import java.util.UUID;

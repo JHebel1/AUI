@@ -1,6 +1,8 @@
-package org.example.entity;
+package org.example.player.Domain.entities;
 import jakarta.persistence.*;
 import lombok.*;
+import org.example.club.Domain.entities.Club;
+
 import java.io.Serializable;
 import java.util.*;
 @Getter
@@ -9,7 +11,7 @@ import java.util.*;
 @AllArgsConstructor
 @Builder
 @Entity
-@EqualsAndHashCode(onlyExplicitlyIncluded = true)
+@EqualsAndHashCode()
 @Table(name = "players")
 public class Player implements Serializable, Comparable<Player>{
 
