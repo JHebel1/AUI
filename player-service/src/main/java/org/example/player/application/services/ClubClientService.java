@@ -1,5 +1,6 @@
 package org.example.player.application.services;
 
+import org.example.club.domain.ClubRestRepresentation;
 import org.example.core.exceptions.NotFoundException;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -17,7 +18,9 @@ public class ClubClientService {
 
     public UUID findClub(UUID clubId) {
         try {
-            return restTemplate.getForObject("/clubs/{id}" , UUID.class, clubId);
+            ClubRestRepresentation club = restTemplate.getForObject("/clubs/{id}" , ClubRestRepresentation.class, clubId);
+
+            return club.getId();
         } catch (HttpClientErrorException.NotFound e) {
             throw new NotFoundException();
         }
