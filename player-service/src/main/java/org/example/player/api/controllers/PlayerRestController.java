@@ -101,4 +101,14 @@ public class PlayerRestController {
             return ResponseEntity.notFound().build();
         }
     }
+
+    @DeleteMapping("/api/clubs/{clubID}/players")
+    public ResponseEntity<Void> deleteClubPlayers(@PathVariable("clubID") UUID clubID) {
+        try {
+            playerService.deletePlayers(clubID);
+            return ResponseEntity.noContent().build();
+        } catch (NotFoundException ex) {
+            return ResponseEntity.notFound().build();
+        }
+    }
 }

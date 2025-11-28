@@ -24,7 +24,7 @@ public class PlayerService {
 
 
     public Player findById(UUID id){
-        return playerRepository.findById(id).orElse(null);
+        return playerRepository.findById(id).orElseThrow(NotFoundException::new);
     }
 
     public Player save(Player player){
@@ -38,7 +38,7 @@ public class PlayerService {
     }
 
     public Iterable<Player> findByClub(UUID id){
-        return playerRepository.findByClubId(id);
+        return playerRepository.findByClub(id);
     }
 
     public boolean checkIfPlayerExists(UUID id){
@@ -52,5 +52,10 @@ public class PlayerService {
     public Player findPlayer(UUID clubId, UUID playerId){
         clubClientService.findClub(clubId);
         return playerRepository.findByClubAndId(clubId, playerId).orElseThrow(NotFoundException::new);
+    }
+
+    public void deletePlayers(UUID clubId){
+        clubClientService.findClub(clubId);
+        playerRepository.deleteAllByClub(clubId);
     }
 }
