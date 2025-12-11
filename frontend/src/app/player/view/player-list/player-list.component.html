@@ -1,0 +1,35 @@
+<article class="text--justified">
+  <header><h2>Players</h2></header>
+
+  @if (players){
+    <table>
+      <thead>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Surname</th>
+      <th>Club</th>
+      <th>Delete</th>
+      </thead>
+      <tbody>
+        @for (player of players.players; track player.id){
+          <tr>
+            <td>{{ player.id }}</td>
+            <td>{{ player.name }}</td>
+            <td>{{ player.surname }}</td>
+            @if(clubs){
+
+              @for (club of clubs.clubs; track club.id){
+                @if (club.id == player.club){
+                  <td>{{ club.name }}</td>
+                }
+              }
+            }
+            <td>
+              <button (click)="onDelete(player)">Delete</button>
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  }
+</article>

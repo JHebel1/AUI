@@ -1,5 +1,6 @@
 package org.example.club.Application.mappers;
 
+import org.example.club.Application.representations.ClubCreatedRequest;
 import org.example.club.Application.representations.ClubRestRepresentation;
 import org.example.club.Domain.entities.Club;
 import org.example.core.representation.CollectionRestRepresentation;
@@ -23,6 +24,7 @@ public class ClubRestMapper {
                 .build();
     }
 
+
     public CollectionRestRepresentation<ClubRestRepresentation> toRepresentation(Iterable<Club> clubs) {
         return CollectionRestRepresentation.<ClubRestRepresentation>builder()
                 .items(StreamSupport.stream(clubs.spliterator(), false)
@@ -40,6 +42,15 @@ public class ClubRestMapper {
                 .name(clubRestRepresentation.getName())
                 .country(clubRestRepresentation.getCountry())
                 .build();
+    }
+
+    public Club toEntity(ClubCreatedRequest club) {
+        return Club.builder()
+                .id(UUID.nameUUIDFromBytes(club.name().getBytes()))
+                .name(club.name())
+                .country(club.country())
+                .build();
+
     }
 
     public Club toEntity(ClubRestRepresentation clubRestRepresentation, UUID clubID) {

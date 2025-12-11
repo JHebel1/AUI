@@ -1,0 +1,71 @@
+/* Karta */
+.club-card {
+  padding: 1.5rem;
+  background: #fafafa;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  max-width: 480px;
+}
+
+/* Nagłówek */
+.club-card h2 {
+  margin-bottom: 1rem;
+  font-weight: 600;
+  color: #333;
+}
+
+/* Formularz */
+.club-form .form-group {
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.club-form label {
+  font-weight: 500;
+  margin-bottom: 4px;
+  color: #444;
+}
+
+/* Pola */
+.club-form input {
+  padding: 8px 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  transition: border-color .2s ease;
+  background: white;
+}
+
+.club-form input:focus {
+  border-color: #1976d2;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(25,118,210,0.15);
+}
+
+/* Błędy */
+.error {
+  color: #d32f2f;
+  font-size: 13px;
+  margin-top: 4px;
+}
+
+/* Przycisk */
+.button-row {
+  margin-top: 1rem;
+}
+
+.btn-primary {
+  background-color: #1976d2;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color .2s ease;
+}
+
+.btn-primary:hover {
+  background-color: #115293;
+}

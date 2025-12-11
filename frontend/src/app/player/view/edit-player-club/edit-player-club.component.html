@@ -1,0 +1,57 @@
+<article>
+  <h2>Edit Club</h2>
+
+  @if (player){
+    <form #form="ngForm" (ngSubmit)="onSubmit()" class="container w-25 m-0">
+
+      <div class = "row">
+        <label class="col-2 m-1" for="name">
+          Name:</label>
+        <input type="text" class="col-2 m-1" id="name" name="name" [(ngModel)]="player.name">
+      </div>
+
+      <div class = "row">
+        <label class="col-2 m-1" for="surname">
+          Country:</label>
+        <input type="text" class="col-2 m-1" id="surname" name="surname" [(ngModel)]="player.surname">
+
+      </div>
+
+      <div class = "row">
+        <label class="col-2 m-1" for="age">
+          Age:</label>
+        <input type="number" class="col-2 m-1" id="age" name="age" [(ngModel)]="player.age">
+
+      </div>
+
+      @if (clubs){
+        <div class="row">
+          <div class="col-4 m-1">
+            <fieldset>
+              <legend>Clubs:</legend>
+              @for (club of clubs.clubs; track club.id){
+                <div>
+                  <label>
+                    <input type="radio" name="clubs" [(ngModel)]="player.club" [value]="club.id"/>
+                    {{ club.name }}
+                  </label>
+                </div>
+              }
+            </fieldset>
+          </div>
+        </div>
+      }
+
+      <div class="row">
+        <div class="col-2 m-1">
+          <button type="submit">Update</button>
+        </div>
+        <div class="col-2 m-1">
+          <button type="button" (click)="form.resetForm(original)">Reset</button>
+        </div>
+      </div>
+
+
+    </form>
+  }
+</article>

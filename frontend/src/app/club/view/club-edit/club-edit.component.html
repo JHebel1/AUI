@@ -1,0 +1,26 @@
+<article class="edit-club-card">
+
+  <h2>Edit Club</h2>
+
+  @if (club) {
+    <form #form="ngForm" (ngSubmit)="onSubmit()" class="edit-form">
+
+      <div class="form-group">
+        <label for="name">Name</label>
+        <textarea id="name" name="name" [(ngModel)]="club.name"></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="country">Country</label>
+        <textarea id="country" name="country" [(ngModel)]="club.country"></textarea>
+      </div>
+
+      <div class="button-row">
+        <button type="submit" class="btn-primary">Update</button>
+        <button type="button" class="btn-danger" (click)="form.resetForm(original)">Reset</button>
+      </div>
+
+    </form>
+  }
+
+</article>

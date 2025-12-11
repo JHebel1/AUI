@@ -1,0 +1,38 @@
+/* Kontener nawigacji */
+.main-nav {
+  background: #ffffff;
+  border-bottom: 1px solid #ddd;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+}
+
+/* Lista */
+.main-nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  gap: 1rem;
+}
+
+/* Linki */
+.main-nav a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  padding: 0.4rem 0.8rem;
+  border-radius: 4px;
+  transition: background-color .2s ease, color .2s ease;
+}
+
+/* Hover efekt */
+.main-nav a:hover {
+  background-color: #f0f0f0;
+}
+
+/* Aktywny link */
+.main-nav a.active {
+  background-color: #1976d2;
+  color: white;
+}

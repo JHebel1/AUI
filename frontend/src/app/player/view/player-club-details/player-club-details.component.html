@@ -1,0 +1,9 @@
+<article>
+  @if (player){
+    <h1>{{player.name}} {{player.surname}}</h1>
+    <h2>{{player.age}}</h2>
+    @if (club) {
+      <h2>{{club.name}}</h2>
+    }
+  }
+</article>

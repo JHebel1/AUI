@@ -1,0 +1,35 @@
+<article class="text--justified">
+  <header><h2>Clubs</h2></header>
+
+  <a routerLink="/clubs/add">Dodaj klub</a>
+
+  @if (clubs?.clubs?.length) {
+    <table>
+      <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Country</th>
+        <th>Edit</th>
+        <th>Delete</th>
+      </tr>
+      </thead>
+
+      <tbody>
+        @for (club of clubs!.clubs; track club.id) {
+          <tr>
+            <td> <a [routerLink]="['/clubs', club.id]">{{ club.id }}</a></td>
+            <td>{{ club.name }}</td>
+            <td>{{ club.country }}</td>
+            <td>
+              <a [routerLink]="['/clubs', club.id, 'edit']">Edit</a>
+            </td>
+            <td>
+              <button (click)="onDelete(club)">Delete</button>
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  }
+</article>

@@ -1,0 +1,32 @@
+<article>
+  @if (club){
+    <h1>{{club.name}}</h1>
+    <h2><a [routerLink]="['/clubs', club.id, 'addplayer']">Add Player</a></h2>
+    @if (players)
+    {
+      <table>
+        <thead>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Surname</th>
+        <th>Edit</th>
+        <th>Delete</th>
+        </thead>
+        <tbody>
+          @for (player of players.players; track player.id){
+            <tr>
+              <td><a [routerLink]="['/clubs', club.id, 'players', player.id]">{{ player.id }}</a></td>
+              <td>{{ player.name }}</td>
+              <td>{{ player.surname }}</td>
+              <td><a [routerLink]="['/clubs', club.id, 'editplayer', player.id]">Edit</a></td>
+              <td>
+                <button (click)="onDelete(player)">Delete</button>
+              </td>
+
+            </tr>
+          }
+        </tbody>
+      </table>
+    }
+  }
+</article>

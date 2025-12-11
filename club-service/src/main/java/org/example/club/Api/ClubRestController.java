@@ -2,6 +2,7 @@ package org.example.club.Api;
 
 import lombok.RequiredArgsConstructor;
 import org.example.club.Application.mappers.ClubRestMapper;
+import org.example.club.Application.representations.ClubCreatedRequest;
 import org.example.club.Application.representations.ClubRestRepresentation;
 import org.example.club.Application.services.ClubService;
 import org.example.club.Domain.entities.Club;
@@ -40,6 +41,16 @@ public class ClubRestController {
         } catch (NotFoundException ex) {
             return ResponseEntity.notFound().build();
         }
+    }
+
+    @PutMapping(
+            path = "/api/clubs",
+            consumes = MediaType.APPLICATION_JSON_VALUE
+    )
+    public ResponseEntity<ClubRestRepresentation> addClub(@RequestBody ClubCreatedRequest club){
+        Club newClub = clubMapper.toEntity(club);
+        clubService.save(newClub);
+        return ResponseEntity.ok(clubMapper.toRepresentation(newClub));
     }
 
     @PutMapping(

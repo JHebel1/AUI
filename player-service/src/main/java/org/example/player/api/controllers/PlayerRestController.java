@@ -73,6 +73,16 @@ public class PlayerRestController {
     }
 
     @PutMapping(
+            value = "/api/clubs/{clubID}/players",
+            consumes = MediaType.APPLICATION_JSON_VALUE
+    )
+    public ResponseEntity<Void> addPlayerClub(@PathVariable("clubID") UUID clubID, @RequestBody PlayerRestRepresentation player) {
+        UUID playerID = UUID.nameUUIDFromBytes((player.getName().toLowerCase() + "_" + player.getSurname().toLowerCase()).getBytes());
+        playerService.save(playerMapper.toEntity(player, playerID, clubID));
+        return ResponseEntity.created(URI.create("/api/clubs/" +  clubID + "/players/" + playerID)).build();
+    }
+
+    @PutMapping(
             value = "/api/clubs/{clubID}/players/{playerID}",
             consumes = MediaType.APPLICATION_JSON_VALUE
     )
