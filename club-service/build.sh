@@ -1,5 +1,20 @@
+#!/usr/bin/env bash
+set -e
+
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+ENV_FILE="${SCRIPT_DIR}/../.env"
 function main() {
-    JAVA_HOME=/usr/lib/jvm/java-25-openjdk mvn clean verify
+    if [ -f "$ENV_FILE" ]; then
+        set -a
+        source "$ENV_FILE"
+        set +a
+    else
+        echo ".env not found at $ENV_FILE"
+        exit 1
+    fi
+
+    mvn clean verify
+
     title="$(grep -n "org.opencontainers.image.title" Dockerfile | cut -f2 -d "=" | xargs)"
     version="$(grep -n "org.opencontainers.image.version" Dockerfile | cut -f2 -d "=" | xargs)"
 
