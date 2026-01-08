@@ -1,6 +1,7 @@
 package org.example.club.infrastructure;
 
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.client.RestTemplate;
@@ -10,9 +11,9 @@ import org.springframework.boot.web.client.RestTemplateBuilder;
 public class ClubRestTemplateConfig {
     @Bean
     @Qualifier("club")
-    public RestTemplate clubRestTemplate(RestTemplateBuilder builder) {
+    public RestTemplate clubRestTemplate(RestTemplateBuilder builder, @Value("${football.club.url}") String clubUrl) {
         return builder
-                .rootUri("http://localhost:8081/api")
+                .rootUri(clubUrl)
                 .build();
     }
 }

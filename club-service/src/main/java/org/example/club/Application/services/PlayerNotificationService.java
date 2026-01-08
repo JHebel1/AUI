@@ -15,6 +15,6 @@ public class PlayerNotificationService {
 
     @EventListener
     public void onClubDeleted(ClubDeletedEvent event){
-        restTemplate.delete("/clubs/{clubId}/players", event.getClubID());
+        restTemplate.delete("/api/clubs/{clubId}/players", event.getClubID());
     }
 }

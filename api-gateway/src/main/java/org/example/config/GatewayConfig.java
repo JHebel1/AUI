@@ -10,9 +10,9 @@ import org.springframework.context.annotation.Configuration;
 public class GatewayConfig {
     @Bean
     public RouteLocator routeLocator(RouteLocatorBuilder builder,
-                                     @Value("${player.service.url}") String playerUrl,
-                                     @Value("${club.service.url}") String clubUrl,
-                                     @Value("${api.gateway.host}") String host)
+                                     @Value("${football.player.url}") String playerUrl,
+                                     @Value("${football.club.url}") String clubUrl,
+                                     @Value("${football.gateway.host}") String host)
     {
         return builder
                 .routes()

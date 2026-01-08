@@ -55,7 +55,7 @@ public class PlayerService {
     }
 
     public void deletePlayers(UUID clubId){
-        clubClientService.findClub(clubId);
+        //clubClientService.findClub(clubId);
         playerRepository.deleteAllByClub(clubId);
     }
 }
