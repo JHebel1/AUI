@@ -1,0 +1,26 @@
+services:
+  football-app-club-db:
+    image: postgres:16-alpine
+    container_name: football-app-club-db
+    restart: always
+    environment:
+      POSTGRES_DB: club-db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - club_pgdata:/var/lib/postgresql/data
+
+  football-app-player-db:
+    image: postgres:16-alpine
+    container_name: football-app-player-db
+    restart: always
+    environment:
+      POSTGRES_DB: player-db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - player_pgdata:/var/lib/postgresql/data
+
+volumes:
+  club_pgdata:
+  player_pgdata:

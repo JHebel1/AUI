@@ -4,12 +4,22 @@ services:
     restart: always
     environment:
       FOOTBALL_PLAYER_URL: "http://football-app-player:8080"
+      SPRING_DATASOURCE_URL: jdbc:postgresql://football-app-club-db:5432/club-db
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: postgres
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+      SPRING_DATASOURCE_DRIVER_CLASS_NAME: org.postgresql.Driver
 
   football-app-player:
     image: football-app-player:1.0.0
     restart: always
     environment:
       FOOTBALL_CLUB_URL: "http://football-app-club:8080"
+      SPRING_DATASOURCE_URL: jdbc:postgresql://football-app-player-db:5432/player-db
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: postgres
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+      SPRING_DATASOURCE_DRIVER_CLASS_NAME: org.postgresql.Driver
 
   football-app-gateway:
     image: football-app-gateway:1.0.0
@@ -26,3 +36,29 @@ services:
       API_URL: http://football-app-gateway:8080/api
     ports:
       - "8084:80"
+
+  football-app-club-db:
+    image: postgres:16-alpine
+    container_name: football-app-club-db
+    restart: always
+    environment:
+      POSTGRES_DB: club-db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - club_pgdata:/var/lib/postgresql/data
+
+  football-app-player-db:
+    image: postgres:16-alpine
+    container_name: football-app-player-db
+    restart: always
+    environment:
+      POSTGRES_DB: player-db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - player_pgdata:/var/lib/postgresql/data
+
+volumes:
+  club_pgdata:
+  player_pgdata:
